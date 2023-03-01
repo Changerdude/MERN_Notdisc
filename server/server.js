@@ -1,11 +1,16 @@
 const express = require("express");
 const cors = require('cors')
 const app = express();
+const cookieParser = require('cookie-parser');
+const credentials = require("./config/credentials.config");
+const corsOptions = require('./config/corsOptions.config');
 require('./config/mongoose.config');
 
-app.use(cors());
+app.use(credentials);
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 require("./routes/user.routes")(app);
 

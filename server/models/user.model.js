@@ -16,6 +16,9 @@ const UserSchema = new mongoose.Schema({
     pwHash: {
         type: String,
         required: [true, "{PATH} is required"],
+    },
+    refreshToken: {
+        type: String
     }
 },{ timestamps: true });
 
