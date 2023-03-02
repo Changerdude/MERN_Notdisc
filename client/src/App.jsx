@@ -1,4 +1,5 @@
 import RequireAuth from './components/RequireAuth';
+import { UserListProvider } from './context/UserListProvider';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import Login from './views/Login';
@@ -9,14 +10,16 @@ function App() {
 
   return (
     <div>
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/create' element={<Registration />} />
-        <Route element={<RequireAuth />}>
-          <Route path='/main' element={<Main />} />
-        </Route>
-        <Route path='*' element={<Navigate to='/login' replace />}/>
-      </Routes>
+      <UserListProvider>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/create' element={<Registration />} />
+          <Route element={<RequireAuth />}>
+            <Route path='/main' element={<Main />} />
+          </Route>
+          <Route path='*' element={<Navigate to='/login' replace />} />
+        </Routes>
+      </UserListProvider>
     </div>
   );
 }

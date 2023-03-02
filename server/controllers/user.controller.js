@@ -20,15 +20,8 @@ module.exports.login = (req, res) => {
                     process.env.REFRESH_TOKEN_SECRET,
                     { expiresIn: '1d' }
                 );
-                const userWithToken = { ...user, refreshToken }
-                User.findOneAndUpdate({ _id: user._id }, userWithToken, { new: true, runValidators: true })
-                    .then(() => {
-                        res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: "None", secure: true, maxAge: 24 * 60 * 60 * 1000 });
-                        res.json({ accessToken, "username": user.username });
-                    })
-                    .catch((err) => {
-                        res.status(400).json({ message: "Something went wrong", error: err });
-                    });
+                res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: "None", secure: true, maxAge: 24 * 60 * 60 * 1000 });
+                res.json({ accessToken, "username": user.username });
             } else {
                 res.status(401);
             }
@@ -39,25 +32,8 @@ module.exports.login = (req, res) => {
 }
 
 module.exports.logout = (req, res) => {
-    const { cookies } = req.cookies;
-    if (!cookies?.jwt) return res.sendStatus(204);
-    const refreshToken = cookies.jwt;
-    User.findOne({ refreshToken })
-        .then((user) => {
-            const userClearToken = { ...user, "refreshToken": '' }
-            User.findOneAndUpdate({ _id: user._id }, userClearToken, { new: true, runValidators: true })
-                .then(() => {
-                    res.clearCookie('jwt');
-                    res.sendStatus(204);
-                })
-                .catch((err) => {
-                    res.status(400).json({ message: "Something went wrong", error: err });
-                });
-        })
-        .catch((err) => {
-            res.clearCookie('jwt');
-            res.sendStatus(204);
-        })
+    res.clearCookie('jwt');
+    res.sendStatus(204);
 }
 
 module.exports.refreshToken = (req, res) => {
@@ -102,8 +78,7 @@ module.exports.createUser = (req, res) => {
     const user = {
         email,
         username,
-        "pwHash": hashedPw,
-        refreshToken
+        "pwHash": hashedPw
     }
     User.create(user)
         .then((newUser) => {
