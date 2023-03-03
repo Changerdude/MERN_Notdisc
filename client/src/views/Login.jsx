@@ -26,22 +26,23 @@ const Login = () => {
   }
 
   return (
-    <>
-          <Container>
+    <div className='d-flex align-items-center justify-content-center' style={{height:'100vh'}}>
+          <Container className='theme-lt-grey' style={{width:'340px'}}>
+            <h1 className='mb-4 text-center'>Notdisc</h1>
         <Form onSubmit={handleSubmit}>
-          <Form.Group>
+          <Form.Group className='mb-4'>
             <Form.Label>Email:</Form.Label>
-            <Form.Control type='text' onChange={(e) => setEmail(e.target.value)} value={email} required/>
+            <Form.Control className='theme-dk-grey' type='text' onChange={(e) => setEmail(e.target.value)} value={email} required/>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className='mb-4'>
             <Form.Label>Password:</Form.Label>
-            <Form.Control type='password' onChange={(e) => setPw(e.target.value)} value={pw} required/>
+            <Form.Control className='theme-dk-grey' type='password' onChange={(e) => setPw(e.target.value)} value={pw} required/>
           </Form.Group>
-          <Button type='submit'>Sign In</Button>
+          <Button className='theme-orange'type='submit'>Sign In</Button>
         </Form>
-        <Link to='/create'>Need an account?</Link>
+        <Link to='/create' className='mb-2'>Need an account?</Link>
       </Container>
-    </>
+    </div>
   )
 }
 

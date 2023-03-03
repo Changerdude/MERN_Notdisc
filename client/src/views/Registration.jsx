@@ -44,39 +44,40 @@ const Registration = () => {
   }
 
   return (
-    <>
-      <Container>
-        <Form onSubmit={handleSubmit} className='needs-validation' noValidate>
-          <Form.Group>
+    <div className='d-flex align-items-center justify-content-center' style={{height:'100vh'}}>
+      <Container className="theme-lt-grey" style={{width:'340px'}}>
+        <h1 className='mb-4 text-center'>Sign Up</h1>
+        <Form onSubmit={handleSubmit} className='needs-validation m-auto' noValidate>
+          <Form.Group className='mb-3'>
             <Form.Label>Email:</Form.Label>
-            <Form.Control type='text' onChange={(e) => setEmail(e.target.value)} value={email} required isInvalid={!EMAIL_REGEX.test(email)}/>
+            <Form.Control className='theme-dk-grey' type='text' onChange={(e) => setEmail(e.target.value)} value={email} required isInvalid={!EMAIL_REGEX.test(email)}/>
             <Form.Control.Feedback type='invalid'>
               Must be a valid email
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className='mb-3'>
             <Form.Label>Username(This is what people will see your name as):</Form.Label>
-            <Form.Control type='text' onChange={(e) => setUsername(e.target.value)} value={username} required isInvalid={error?.username}/>
+            <Form.Control className='theme-dk-grey' type='text' onChange={(e) => setUsername(e.target.value)} value={username} required isInvalid={error?.username}/>
             <Form.Control.Feedback type='invalid'>
               {error.username?.message}
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className='mb-3'>
             <Form.Label>Password:</Form.Label>
-            <Form.Control type='password' onChange={(e) => setPw(e.target.value)} value={pw} required />
+            <Form.Control className='theme-dk-grey' type='password' onChange={(e) => setPw(e.target.value)} value={pw} required />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className='mb-3'>
             <Form.Label>Confirm Password:</Form.Label>
-            <Form.Control type='password' onChange={(e) => setConfirmPw(e.target.value)} value={confirmPw} required isInvalid={!pwMatch} />
+            <Form.Control className='theme-dk-grey' type='password' onChange={(e) => setConfirmPw(e.target.value)} value={confirmPw} required isInvalid={!pwMatch} />
             <Form.Control.Feedback type='invalid'>
               Passwords must match
             </Form.Control.Feedback>
           </Form.Group>
-          <Button type='submit'>Create User</Button>
+          <Button className='theme-orange' type='submit'>Create User</Button>
         </Form>
-        <Link to='/login'>Already have an account?</Link>
+        <Link to='/login' className='mb-2'>Already have an account?</Link>
       </Container>
-    </>
+    </div>
   )
 }
 

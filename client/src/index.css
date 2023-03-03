@@ -11,3 +11,65 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.theme-lt-grey{
+  background-color: #303030!important;
+  color: #FF7F27!important;
+  outline: #FF7F27 solid 1px!important;
+  border: 1px solid #FF7F27!important;
+}
+.theme-lt-grey p:hover{
+  cursor: pointer;
+}
+
+.theme-lt-grey a{
+  color: #FF7F27;
+}
+.theme-lt-grey a:hover{
+  color: #b7500b;
+}
+.theme-dk-grey{
+  background-color: #202020!important;
+  color: #FF7F27!important;
+  outline: #FF7F27 solid 1px!important;
+  border: 1px solid #FF7F27!important;
+}
+.theme-dk-grey.nav-link.active{
+  background-color: #FF7F27!important;
+  color: #303030!important;
+  border: 1px solid #FF7F27!important;
+  outline: #FF7F27 solid 1px;
+}
+.theme-orange{
+  background-color: #FF7F27!important;
+  color: #303030!important;
+  border: 1px solid #FF7F27!important;
+  outline: #FF7F27 solid 1px;
+}
+.btn.theme-orange:hover{
+  background-color: #b7500b!important;
+  border: 1px solid #b7500b!important;
+  outline: #b7500b solid 1px!important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #303030; 
+  border: 1px solid #FF7F27;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FF7F27; 
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b7500b; 
+}
+
+.form-control:focus{
+  border-color: #b7500b!important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(255, 136, 0)!important;
+}

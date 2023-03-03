@@ -29,7 +29,7 @@ servCon.on("connection", socket => {
     servCon.emit('current-user-list' , Object.keys(users))
 
     socket.on("message-toServ", data => {
-        if(data.room === "main"){
+        if(data.room === "Main"){
             socket.broadcast.emit('message-toClient', data)
         } else {
             console.log('Rec: ' + data.room)
