@@ -14,10 +14,10 @@ app.use(cookieParser());
 
 require("./routes/user.routes")(app);
 
-app.listen(8000, () => console.log("The server is listening at port 8000"));
+const server = app.listen(8000, () => console.log("The server is listening at port 8000"));
 
 
-const servCon = require('socket.io')(5000, {
+const servCon = require('socket.io')(server, {
     cors: {
         origin: ['http://localhost:3000']
     }

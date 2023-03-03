@@ -24,7 +24,7 @@ const Main = () => {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    setSocket(io('http://localhost:5000', { query: { username: auth.username } }));
+    setSocket(io('http://localhost:8000', { query: { username: auth.username } }));
   }, [])
 
 
