@@ -9,9 +9,13 @@ import Button from 'react-bootstrap/Button';
 
 const Login = () => {
   const nav = useNavigate();
-  const { setAuth } = useAuth();
+  const { auth,setAuth } = useAuth();
   const [email,setEmail] = useState('');
   const [pw,setPw] = useState('');
+
+  useEffect(() => {
+    if(auth.username) nav('/main',{replace:true})
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();

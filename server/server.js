@@ -19,7 +19,7 @@ const server = app.listen(8000, () => console.log("The server is listening at po
 
 const servCon = require('socket.io')(server, {
     cors: {
-        origin: ['http://localhost:3000']
+        origin: ['http://34.229.157.141']
     }
 })
 const users = {};

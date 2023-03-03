@@ -15,7 +15,7 @@ const Sidebar = props => {
                 <img src="icon.png" alt="logo" height={'50px'} width={'50px'} className=''/>
                 <div className='fs-4 mx-auto'>Notdisc</div>
             </div>
-            <div className='px-2 flex-grow-1'>
+            <div className='px-2 flex-grow-1 overflow-auto'>
                 {userList.map((user,i) => {
                     return (
                         <p className={`${user === auth.username && 'theme-orange'} m-1`} key={i} onClick={() => selectUser(user)}>{user === auth.username ? `You(${user})` : user}</p>

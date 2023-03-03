@@ -24,6 +24,7 @@ const Main = () => {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
+    if(!auth.username) nav('/login', {replace:true});
     setSocket(io('http://localhost:8000', { query: { username: auth.username } }));
   }, [])
 

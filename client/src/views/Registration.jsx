@@ -5,10 +5,9 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import FormRange from 'react-bootstrap/esm/FormRange';
 
 const Registration = () => {
-  const { setAuth } = useAuth();
+  const { auth,setAuth } = useAuth();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [pw, setPw] = useState('');
@@ -19,6 +18,10 @@ const Registration = () => {
   const EMAIL_REGEX = new RegExp('^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$');
 
   const nav = useNavigate();
+
+  useEffect(() => {
+    if(auth.username) nav('/main',{replace:true})
+  },[])
 
   useEffect(() => {
     const match = pw === confirmPw;

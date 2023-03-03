@@ -1,5 +1,5 @@
 const allowedOrigins = [
-    'http://localhost:3000'
+    'http://34.229.157.141'
 ];
 
 module.exports = allowedOrigins;
